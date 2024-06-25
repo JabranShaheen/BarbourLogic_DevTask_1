@@ -16,4 +16,9 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions.csproj" />
+    <ProjectReference Include="..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Implementations\BarbourLogic_DevTask_1.Implementations.csproj" />
+  </ItemGroup>
+
 </Project>
