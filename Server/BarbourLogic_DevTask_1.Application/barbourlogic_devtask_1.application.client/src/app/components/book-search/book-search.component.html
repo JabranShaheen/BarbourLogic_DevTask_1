@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Search Books</h2>
+    <form (ngSubmit)="onSearch()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" class="form-control" [(ngModel)]="author" name="author">
+      </div>
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" class="form-control" [(ngModel)]="isbn" name="isbn">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  
+    <div *ngIf="books && books.length > 0">
+      <h3>Search Results</h3>
+      <ul>
+        <li *ngFor="let book of books">
+          <strong>{{ book.title }}</strong> by {{ book.author }} (ISBN: {{ book.isbn }})
+        </li>
+      </ul>
+    </div>
+  </div>
+  
