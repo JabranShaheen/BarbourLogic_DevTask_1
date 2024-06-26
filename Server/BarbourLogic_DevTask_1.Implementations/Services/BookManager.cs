@@ -78,17 +78,17 @@ namespace BarbourLogic_DevTask_1.Repositories
 
             if (!string.IsNullOrWhiteSpace(title))
             {
-                books = books.Where(b => b.Title.Contains(title)).ToList();
+                books = books.Where(b => b.Title.IndexOf(title, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
 
             if (!string.IsNullOrWhiteSpace(author))
             {
-                books = books.Where(b => b.Author.Contains(author)).ToList();
+                books = books.Where(b => b.Author.IndexOf(author, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
 
             if (!string.IsNullOrWhiteSpace(isbn))
             {
-                books = books.Where(b => b.ISBN.Contains(isbn)).ToList();
+                books = books.Where(b => b.ISBN.IndexOf(isbn, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
 
             return books;

@@ -18,8 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions.csproj" />
-    <ProjectReference Include="..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Implementations\BarbourLogic_DevTask_1.Implementations.csproj" />
+    <ProjectReference Include="..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions.csproj" />
+    <ProjectReference Include="..\BarbourLogic_DevTask_1.Implementations\BarbourLogic_DevTask_1.Implementations.csproj" />
   </ItemGroup>
+
 
 </Project>

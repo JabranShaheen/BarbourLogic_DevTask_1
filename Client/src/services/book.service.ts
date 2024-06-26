@@ -8,7 +8,7 @@ import { Book } from '../app/models/book';
 })
 export class BookService {
 
-  private apiUrl = 'https://localhost:7279/api/Books';  // Update this to your API endpoint
+  private apiUrl = 'https://localhost:7016/api/Books';  // Update this to your API endpoint
   
   constructor(private http: HttpClient) { }
 
