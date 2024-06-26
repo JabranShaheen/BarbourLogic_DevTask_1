@@ -10,7 +10,8 @@ namespace BarbourLogic_DevTask_1.Abstractions
         void DeleteBook(string isbn);
         Book GetBookByISBN(string isbn);
         IEnumerable<Book> GetAllBooks();
-        void BorrowBook(string isbn, User user);
         void ReturnBook(string isbn, User user);
+        void BorrowBook(string isbn, User user);
+        IEnumerable<Book> SearchBooks(string title, string author, string isbn);
     }
 }

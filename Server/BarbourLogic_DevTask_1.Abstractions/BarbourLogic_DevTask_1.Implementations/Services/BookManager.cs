@@ -70,5 +70,28 @@ namespace BarbourLogic_DevTask_1.Repositories
             _bookRepository.Update(isbn, book);
             _userRepository.Update(user.UserID, user);
         }
+
+
+        public IEnumerable<Book> SearchBooks(string title, string author, string isbn)
+        {
+            var books = _bookRepository.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                books = books.Where(b => b.Title.Contains(title)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(author))
+            {
+                books = books.Where(b => b.Author.Contains(author)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(isbn))
+            {
+                books = books.Where(b => b.ISBN.Contains(isbn)).ToList();
+            }
+
+            return books;
+        }
     }
 }

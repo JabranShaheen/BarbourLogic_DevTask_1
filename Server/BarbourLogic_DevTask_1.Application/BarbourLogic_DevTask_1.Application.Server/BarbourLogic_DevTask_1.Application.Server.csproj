@@ -18,9 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\barbourlogic_devtask_1.application.client\barbourlogic_devtask_1.application.Client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    <ProjectReference Include="..\..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Abstractions.csproj" />
+    <ProjectReference Include="..\..\BarbourLogic_DevTask_1.Abstractions\BarbourLogic_DevTask_1.Implementations\BarbourLogic_DevTask_1.Implementations.csproj" />
   </ItemGroup>
 
 </Project>

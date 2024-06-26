@@ -167,5 +167,100 @@ namespace BarbourLogic_DevTask_1.Test
             // Act
             _bookManager.ReturnBook("12345", user);
         }
+
+        [TestMethod]
+        public void SearchBooks_ShouldReturnBooksByTitle()
+        {
+            // Arrange
+            var books = new List<Book>
+            {
+                new Book { Title = "Test Book 1", Author = "Author 1", ISBN = "12345", IsAvailable = true },
+                new Book { Title = "Another Book", Author = "Author 2", ISBN = "67890", IsAvailable = true }
+            };
+            _mockBookRepository.Setup(r => r.GetAll()).Returns(books);
+
+            // Act
+            var result = _bookManager.SearchBooks("Test Book 1", null, null).ToList();
+
+            // Assert
+            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual("Test Book 1", result[0].Title);
+        }
+
+        [TestMethod]
+        public void SearchBooks_ShouldReturnBooksByAuthor()
+        {
+            // Arrange
+            var books = new List<Book>
+            {
+                new Book { Title = "Test Book 1", Author = "Author 1", ISBN = "12345", IsAvailable = true },
+                new Book { Title = "Another Book", Author = "Author 2", ISBN = "67890", IsAvailable = true }
+            };
+            _mockBookRepository.Setup(r => r.GetAll()).Returns(books);
+
+            // Act
+            var result = _bookManager.SearchBooks(null, "Author 2", null).ToList();
+
+            // Assert
+            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual("Another Book", result[0].Title);
+        }
+
+        [TestMethod]
+        public void SearchBooks_ShouldReturnBooksByISBN()
+        {
+            // Arrange
+            var books = new List<Book>
+            {
+                new Book { Title = "Test Book 1", Author = "Author 1", ISBN = "12345", IsAvailable = true },
+                new Book { Title = "Another Book", Author = "Author 2", ISBN = "67890", IsAvailable = true }
+            };
+            _mockBookRepository.Setup(r => r.GetAll()).Returns(books);
+
+            // Act
+            var result = _bookManager.SearchBooks(null, null, "12345").ToList();
+
+            // Assert
+            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual("Test Book 1", result[0].Title);
+        }
+
+        [TestMethod]
+        public void SearchBooks_ShouldReturnBooksByMultipleCriteria()
+        {
+            // Arrange
+            var books = new List<Book>
+            {
+                new Book { Title = "Test Book 1", Author = "Author 1", ISBN = "12345", IsAvailable = true },
+                new Book { Title = "Test Book 2", Author = "Author 1", ISBN = "67890", IsAvailable = true },
+                new Book { Title = "Test Book 3", Author = "Author 2", ISBN = "11111", IsAvailable = true }
+            };
+            _mockBookRepository.Setup(r => r.GetAll()).Returns(books);
+
+            // Act
+            var result = _bookManager.SearchBooks("Test Book", "Author 1", null).ToList();
+
+            // Assert
+            Assert.AreEqual(2, result.Count);
+        }
+
+        [TestMethod]
+        public void SearchBooks_ShouldReturnEmptyListWhenNoMatch()
+        {
+            // Arrange
+            var books = new List<Book>
+            {
+                new Book { Title = "Test Book 1", Author = "Author 1", ISBN = "12345", IsAvailable = true },
+                new Book { Title = "Another Book", Author = "Author 2", ISBN = "67890", IsAvailable = true }
+            };
+            _mockBookRepository.Setup(r => r.GetAll()).Returns(books);
+
+            // Act
+            var result = _bookManager.SearchBooks("Nonexistent Book", null, null).ToList();
+
+            // Assert
+            Assert.AreEqual(0, result.Count);
+        }
+
     }
 }
